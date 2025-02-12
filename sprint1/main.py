@@ -1,5 +1,4 @@
 import csv
-import sys
 import time
 
 
@@ -28,18 +27,25 @@ def main_menu():
         else:
             print("Invalid choice. Please enter a number between 1 and 5.")
 
+        time.sleep(.5)
+
 
 def search_leader_by_bonus():
-    yield_type = input("Enter the yield type (Science, Culture, etc.) or Custom: ")
+    yield_type = input("Enter the yield type (Science, Culture, or a custom tag: ")
     print(f"Searching for leaders with a bonus to {yield_type}...\n")
     # Add logic to search
+    with open('yield_search.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([yield_type])
 
 
 def search_leader_by_civilization():
     civilization = input("Enter the civilization (Japan, England, etc.): ")
-    
-    #print(f"Searching for leaders from {civilization}...\n")
+    print(f"Searching for leaders from {civilization}...\n")
     # Add logic to search
+    with open('leader_search.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([civilization])
 
 
 # limits: add a leader to a civ that exists or add a new civ at the same time
@@ -52,7 +58,7 @@ def add_or_edit_leader():
         print(f"Adding leader: {leader_name}, Civilization: {civilization}, Bonus: {leader_bonus}\n")
         # Add logic to update
     elif action == "EDIT":
-        leader_name = input("Enter the leader you want to edit: ")
+        leader_name = input("Enter the leader you want to edit, WARNING, EDITS CANNOT BE UNDONE ONCE SUBMITTED: ")
         print(f"Editing leader: {leader_name}\n")
         # Add logic to edit
     else:
@@ -64,7 +70,9 @@ def search_leader_by_unit_class():
     if unit_class == "1":
         return
     print(f"Searching for leaders with a unique unit in class {unit_class}...")
-    # Add logic to search
+    with open('unit_search.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([unit_class])
 
 
 if __name__ == "__main__":
