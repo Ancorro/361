@@ -42,6 +42,7 @@ def search_leader_by_civilization():
     # Add logic to search
 
 
+# limits: add a leader to a civ that exists or add a new civ at the same time
 def add_or_edit_leader():
     action = input("Type ADD to add a new leader or EDIT to edit an existing one: ").strip().upper()
     if action == "ADD":
